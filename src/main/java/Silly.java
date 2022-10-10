@@ -16,11 +16,9 @@ public class Silly implements Comparable<Silly>{
      * 1. Java has variables known as "static" variables.
      * These are variables that exist in every instance of a class,
      * and which have the same value across all instances.
-     *
      * Below we have created a static variable (signified by the keyword
      * static) named my_static. The countStatic() method makes use of this
      * static variable.
-     *
      * (Relevant reading: 2.1. Static variables)
      */
     public static int my_static = 0;
@@ -72,28 +70,25 @@ public class Silly implements Comparable<Silly>{
         this.name = "Silly #" + number;
     }
 
-    /**
-     * TODO (Task 1): Create another constructor that takes in TWO parameters,
-     *       both of which are strings.
-     *       Afterwards, set this.name to the concatenation of both
-     *       strings (e.g. this.name = [first string] + [second string]).
-     *       Make sure you document this method!
-     */
 
+
+    /**
+     * Creates a new Silly object.
+     * This constructor takes in a single int as an argument.
+     *
+     * @param x a number for this Silly instance's name.
+     *
+     * @param y a number for this Silly instance's name.
+     *
+     */
+    public Silly(String x, String y){
+        this.name = x + y;
+    }
 
 
 
 
     public static void main(String[] args) {
-        /**
-         * Task 1 (continued): The below demonstrates how each of the Silly
-         *                     constructors are called.
-         *
-         * This is simply provided as an example for you to see whether your
-         * code is working correctly, and to see how the different calls appear
-         *
-         * To run this, Task 3 is also required to be completed.
-         */
         Silly first_version = new Silly("single str name");
         Silly second_version = new Silly(5);
         Silly third_version = new Silly("first", "second");
@@ -116,7 +111,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {0,0,1,2};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -133,7 +128,7 @@ public class Silly implements Comparable<Silly>{
      */
     @Override
     public String toString(){
-        // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -158,7 +153,7 @@ public class Silly implements Comparable<Silly>{
         }
 
         Silly other = (Silly) o; // To access .name of o, we need to cast it.
-
+        return other.name.equals(this.name);
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
     }
@@ -194,6 +189,7 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        return this.name.length() - other.name.length();
     }
 
     /*
